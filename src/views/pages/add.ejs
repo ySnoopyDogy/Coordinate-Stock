@@ -1,0 +1,67 @@
+<% contentFor('body') %>
+<form action="/api/add" method="post">
+  <div class="form-group">
+    <label for="coordName">Nome da Coordenada</label>
+    <input
+      type="text"
+      class="form-control"
+      id="coordName"
+      name="coordName"
+      placeholder="Nome"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="coordDescription">Descrição da Coordenada</label>
+    <input
+      type="text"
+      class="form-control"
+      name="coordDescription"
+      placeholder="Breve Descrição"
+      id="coordDescription"
+    />
+  </div>
+  
+  <div class="form-group">
+    <label for="coordWorld">Mundo da Coordenada</label>
+    <select class="form-control" name="coordWorld" id="coordWorld" required>
+      <option value="OVERWORLD" disabled selected>MUNDO</option>
+      <option value="OVERWORLD">OVERWORLD</option>
+      <option value="NETHER">NETHER</option>
+      <option value="END">END</option>
+    </select>
+  </div>
+  <label for="cord">Coordenadas</label>
+    <div class="row" id="cord">
+      <div class="form-group col-md-1">
+        <input
+          type="text"
+          id="x"
+          name="x"
+          class="form-control"
+          placeholder="X"
+          required
+        />
+      </div>
+      <div class="form-group col-md-1">
+        <input
+          type="text"
+          id="y"
+          name="y"
+          class="form-control"
+          placeholder="Y"
+        />
+      </div>
+      <div class="form-group col-md-1">
+        <input
+          type="text"
+          id="z"
+          name="z"
+          class="form-control"
+          placeholder="Z"
+          required
+        />
+      </div>
+    </div>
+  <input type="submit" class="btn btn-primary" value="Adicionar" />
+</form>
