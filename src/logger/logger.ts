@@ -11,6 +11,14 @@ export default class Logger {
     console.log(`${chalk.yellow(moment(Date.now()).format('L LTS'))} | ${type} ${message}`);
   }
 
+  private static consoleDebug(debug: any): void {
+    console.log(chalk.yellow(moment(Date.now()).format('L LTS')), chalk.green('[DEBUG]'), debug);
+  }
+
+  public static debug(message: any): void {
+    this.consoleDebug(message);
+  }
+
   public static info(message: string): void {
     this.consoleLog(chalk.white('[INFO]'), message);
   }

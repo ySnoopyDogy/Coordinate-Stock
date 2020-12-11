@@ -6,11 +6,15 @@ module.exports = {
   extends: [
     'airbnb-base',
   ],
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts'],
+    },
+    'import/resolver': {
+      node: {
+        extensions: ['.ts'],
+      },
+      typescript: {},
     },
   },
   parser: '@typescript-eslint/parser',
@@ -22,6 +26,15 @@ module.exports = {
     '@typescript-eslint',
   ],
   rules: {
+    'import/extensions': ['error', 'never'],
+    'import/no-extraneous-dependencies': 'off',
+    '@typescript-eslint/type-annotation-spacing': [
+      'error',
+      {
+        after: true,
+        before: false,
+      },
+    ],
   },
   ignorePatterns: ['*.js', 'node_modules/*', 'dist/*'],
 };
