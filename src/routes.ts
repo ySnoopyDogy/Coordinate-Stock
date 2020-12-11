@@ -5,6 +5,7 @@ import AddCoordController from './controllers/AddCoordController';
 
 const router = Router();
 
+router.get('/add', (req, res) => res.render('pages/add'));
 router.get('/:id?', ListController.all);
 
 router.post('/api/add', AddCoordController.addCoord);
