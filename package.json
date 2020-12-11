@@ -2,14 +2,34 @@
   "name": "coordinate-stock",
   "version": "1.0.0",
   "description": "Um programa para gerenciar todas as coordenadas do meu mundo no Minecraft",
-  "main": "index.ts",
-  "scripts": {
-    "dev": "ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ySnoopyDogy/coordinate-stock.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Luxanna",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ySnoopyDogy/coordinate-stock/issues"
+  },
+  "homepage": "https://github.com/ySnoopyDogy/coordinate-stock#readme",
+  "scripts": {
+    "lint:fix": "eslint --fix --ext ts src",
+    "build": "tsc",
+    "start": "node -r dotenv/config .",
+    "build:test": "tsc --noEmit",
+    "dev": "tsnd --ignore node_modules --transpile-only --no-notify --respawn -r dotenv/config src/index.ts"
+  },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "ts-node-dev": "^1.1.1",
     "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
   }
 }
