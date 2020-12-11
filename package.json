@@ -1,0 +1,15 @@
+{
+  "name": "coordinate-stock",
+  "version": "1.0.0",
+  "description": "Um programa para gerenciar todas as coordenadas do meu mundo no Minecraft",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.1.2"
+  }
+}
