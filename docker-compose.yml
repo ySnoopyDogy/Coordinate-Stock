@@ -1,0 +1,19 @@
+version: "2"
+services:
+  app:
+    build: .
+    ports:
+      - "3500:3500"
+    depends_on:
+      - database
+
+  database:
+    image: postgres:13
+    volumes:
+      - ./data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      - "POSTGRES_USER=pguser"
+      - "POSTGRES_PASSWORD=pguser"
+      - "POSTGRES_DB=main"
