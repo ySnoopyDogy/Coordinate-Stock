@@ -11,30 +11,54 @@
     <br />
   </p>
 
+## 👷 | Pré-requisitos
+
+- Ter Docker em sua máquina. Você pode baixá-lo [aqui](https://docs.docker.com/get-docker/)
+
 ## ⏬ | Instalação
 
 Clone o repositório com `git clone https://github.com/ySnoopyDogy/coordinate-stock.git`
 
-Crie o arquivo **.env** com a seguinte estrutura:
+Crie o arquivo **.env** na raíz do projeto com a seguinte estrutura:
 
 ```
 PORT - Porta para rodar a aplicação web
 DB_USER - Usuário para se conectar ao banco de dados
-DB_HOST - Ip do banco de dados (utilize 'localhost' para rodar localmente)
+DB_HOST - Host do banco de dados
 DATABASE - Nome do banco de dados
 DB_PASSWORD - Senha do usuário do banco de dados
 ```
 
-Rode as queries do arquivo `postgre.sql` para a criação do banco de dados e tabela
+## 🚀 | Rodando com Docker
 
-Builde a aplicação rodando `npm run build` Então, rode a aplicação com `npm start`
+Antes de rodar o Docker Compose precisamos fazer alguns ajustes de acordo com sua preferência! Todas alterações serão no arquivo `docker-compose.yml`.
 
-## 🔨 | Este projeto foi criado utilizando as seguintes tecnologias
+O serviço `app` é responsável por rodar a aplicação web. Você pode trocar as portas de acordo com sua preferência.
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [Express](https://expressjs.com/pt-br/)
-- [Ejs](https://ejs.co/)
-- [Node Postgres](https://node-postgres.com/)
+> Não esqueça de que a porta exposta do container deve ser a mesma da `.env`.
+
+Já o serviço `database` tem algumas coisinhas que podem ser mudadas!
+Você pode mudar a localização dos volumes do banco de dados, eu utilizo em `./data/`.
+As portas eu aconselho deixar em `5432` pois é o default do Postgre, mas se quiser, a escolha é sua.
+Por fim, você pode mudar as variáveis de ambiente do vanco de dados, que DEVEM ser iguais as da `.env`
+
+###### Feito isso, você já pode rodar o Docker!
+
+Com `docker compose up` você iniciará os dois containers, e na primeira inicialização do container `database` você deve configurar o banco de dados!
+
+- Entre em seu container com `docker excec -it <nome do container> bash`. Isso executará o bash dentro do container, te dando acesso direto ao container.
+- Entre no Postgre para criar a tabela utilizando `psql --username <pguser> --db_name coordinates --host <database>` onde pguser é o usuário da variável de ambiente Docker, e host é o nome do serviço do banco de dados
+- No psql, rode a segunda query do `postgre.sql`
+
+Feito isso você pode sair do container e tudo já estará rodando!
+
+## 🚀 | Rodando sem o Docker :(
+
+Caso você não queira usar docker, está tudo bem! Você só precisará ter o [Postgres](https://www.postgresql.org/) instalado em seu computador. Acesse o psql e rode todas queries do `postgre.sql` para criar o banco de dados e a tabela
+
+> O nome de sua database deverá ser o mesmo do `.env`
+
+Agora, vamos instalar todas dependências necessárias com `npm install`. Sua aplicação está pronta para rodar! `npm start` e xaaaaaama, ta lá meu guri.
 
 ## 🔀 | Rotas
 
@@ -43,6 +67,14 @@ Builde a aplicação rodando `npm run build` Então, rode a aplicação com `npm
 | GET  | `/add`     | Abre a página para adicionar uma nova coordenada                           |
 | GET  | `/:id?`    | Mostra todas as coordenadas existentes, ou uma em específico passando o id |
 | POST | `/api/add` | Adiciona uma nova coordenada ao banco de dados                             |
+
+## 🔨 | Este projeto foi criado utilizando as seguintes tecnologias
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [Express](https://expressjs.com/pt-br/)
+- [Ejs](https://ejs.co/)
+- [Node Postgres](https://node-postgres.com/)
+- [Docker](https://www.docker.com/)
 
 ## ⚖️ | Licença
 

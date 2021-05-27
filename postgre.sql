@@ -1,4 +1,7 @@
+/* CRIAR O BANCO DE DADOS */
 CREATE DATABASE coordinates;
+
+/* CRIAR A TABELA */
 CREATE TABLE coords (
   id SERIAL PRIMARY KEY,
   coord_name VARCHAR(50) NOT NULL,
